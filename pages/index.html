@@ -15,12 +15,12 @@
     }
     
     /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-    .row.content {height: 450px}
+    .row.content {height: 820px}
     
     /* Set gray background color and 100% height */
     .sidenav {
       padding-top: 20px;
-      background-color: #f1f1f1;
+      background-color: #7f7f7f;
       height: 100%;
     }
     
@@ -29,6 +29,9 @@
       background-color: rgb(3, 70, 75);
       color: white;
       padding: 10px;
+      width: 100%;
+      bottom: 0;
+      position: absolute;
     }
     
     /* On small screens, set height to 'auto' for sidenav and grid */
@@ -51,8 +54,6 @@
       background-color: transparent;
       text-decoration: underline;
     }
-
-    
 
   </style>
 </head>
@@ -81,7 +82,7 @@
   
 <div class="container-fluid text-center">    
   <div class="row content">
-    <div class="col-sm-6 text-left"> 
+    <div class="col-sm-7 text-left"> 
         <h1>Videogames</h1>
         <p>With this project, our group was interested in finding a dataset that contained the hours played of specific video games. We found two datasets about video games that interested us. The first dataset was published in 2019 and contains: 37k+ video game titles, their sales, their critic scores, the user scores, genre, ESRB rating, gaming platform, publisher, developer, sales globally and in various continents, and the year they were published. The second dataset was published in 2017 and has: 200k player ids, 6k games, the game title, if they have played it or not, and how many hours they have played the game on Steam.</p>
         <p>Our goal is to combine these two datasets and try to discover any trends based on the hours played of each game on Steam.  We are planning to create a dashboard of multiple charts that update from the same data. With such a large and diverse dataset, we believe this will be the best option for it. For example, we can see how playable steam hours vary by genre and year, or if the games that have not been played yet have similar score user or critic score ratings.</p>
@@ -89,24 +90,25 @@
         <h3>Limitations of the Data</h3>
         <p>Steam only hosts games produced by certain publishers. Some publishers, such as EA, have their own hosts (Origin, Epic Games, etc.). Steam also only hosts PC games, making it unable to be merged with the sales data from other platforms.</p>
     </div>
-    <div class="col-sm-6 sidenav">
-        <h4>Visualization Example</h4>
+    <div class="col-sm-5 sidenav">
         <div class="well">
-          <p>example</p>
+          <h3>Visualization Examples</h3>
         </div>
-        <p><a href="Analysis/analysis.html" class="link-secondary">See All Visualizations</a></p>
+        <br>
+        <p>example 1 (screenshot)</p>
+        <br>
         <hr>
-        <h4>Scroll Through the Data</h4>
-        <div class="well">
-          <p>data</p>
-        </div>
-        <p><a href="Data_Sources/data.html" class="link-secondary">See All Data & Sources</a></p>
+        <br>
+        <p>example 2 (screenshot)</p>
+        <br>
+        <hr>
+        <p><a href="Analysis/analysis.html" class="link-secondary">See All Visualizations</a></p>
       </div>
   </div>
 </div>
 
 <footer class="container-fluid text-center">
-  <p>Bootcamp Project 2 | Group 7 | Videogames</p>
+  <p>Bootcamp Project 2 - Group 7</p>
   <p><a href="https://github.com/AndrewMSchell">Andrew Schell</a> | <a href="https://github.com/apavlovich">Annika Pavlovich</a> | <a href="https://github.com/caseyjuergens">Casey Juergens</a> | <a href="https://github.com/JoshGallagher13">Josh Gallagher</a> | <a href="https://github.com/dunkin-gray">Thaddeus Gray</a></p>
 </footer>
 
