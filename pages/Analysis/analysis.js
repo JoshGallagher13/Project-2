@@ -131,6 +131,10 @@ Plotly.d3.csv('https://raw.githubusercontent.com/JoshGallagher13/Project-2/main/
     
     var allGenreNames = unpack(rows, 'Genre'),
         allYears = unpack(rows, 'Year'),
+<<<<<<< HEAD
+=======
+        allScores = unpack(rows, 'Critic_Score'),
+>>>>>>> 73f3bd769c5f0ae9b2435a1d4d3322a914233feb
         listofGenres = [],
         currentGenre,
         currentYear = [],
