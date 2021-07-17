@@ -9,6 +9,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
 
   <style>
     /* Remove the navbar's default margin-bottom and rounded borders */ 
@@ -84,37 +86,34 @@
       </div>
     </div>
     <div class ="row"></div>
-      <div class="col-md-8">
-        <div id="graph"></div>
-      </div>
-      <div class="col-md-4">
-        <p>More Visualizations Here</p>
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <div class="showcase__section" id="bubble">
+          <div class="spacer --small"></div>
+          <div id="bubbleplots">
+            <div class="bubbleplot" data-num="0">
+              <div class="plot" id="plotdiv"></div>
+              <div class="well">
+                Change Genre: <select class="genredata">
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <br>
     <div class ="row">
-      <div class ="col-md-3"></div>
-        <div class ="col-md-3">
-          <div class="well">
-            <h5>Select a Genre to see game sales over time:</h5>
-            <select id="selDataset" onchange="optionChanged(this.value)"></select>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <p>More Visualizations Here</p>
-        </div>
+      <div class="col-md-12 text-center">
+        <div id="graph"></div>
       </div>
     </div>
   </div>
 
-  <script src='https://cdn.plot.ly/plotly-2.2.0.min.js'></script>
-  <script src="https://d3js.org/d3.v5.min.js"></script>
+
+
+
   <script src="analysis.js"></script>
-
-
-  <footer class="container-fluid text-center">
-    <p>Bootcamp Project 2 | Group 7 | Videogames</p>
-  </footer>
 
 </body>
 </html>

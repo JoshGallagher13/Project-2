@@ -122,4 +122,74 @@
 
     Plotly.newPlot('graph', data, layout);
 
+//interactive with dropdown
+Plotly.d3.csv('https://raw.githubusercontent.com/JoshGallagher13/Project-2/main/resources/vgsales-12-4-2019-short.csv', function(err, rows){
+
+        function unpack(rows, key) {
+            return rows.map(function(row) { return row[key]; });
+        }
     
+    var allGenreNames = unpack(rows, 'Genre'),
+        allYears = unpack(rows, 'Year'),
+        listofGenres = [],
+        currentGenre,
+        currentYear = [],
+        currentScore = [];
+    
+        for (var i = 0; i < allGenreNames.length; i++ ){
+            if (listofGenres.indexOf(allGenreNames[i]) === -1 ){
+            listofGenres.push(allGenreNames[i]);
+            }
+        }
+    
+        function getGenreData(chosenGenre) {
+            currentYear = [];
+            currentGenre = [];
+            for (var i = 0 ; i < allGenreNames.length ; i++){
+                if ( allGenreNames[i] === chosenGenre ) {
+                currentYear.push(allYears[i]);
+                currentScore.push(allGenreNames[i]);
+                } 
+            }
+        };
+    
+    // Default Genre Data
+    setBubblePlot('Action');
+    
+    function setBubblePlot(chosenGenre) {
+        getGenreData(chosenGenre);  
+    
+        var trace1 = {
+            x: currentYear,
+            type: 'histogram',
+        };
+    
+        var data = [trace1];
+    
+        var layout = {
+            title: 'Number of Games Produced by Chosen Genre<br>'+ chosenGenre
+        };
+    
+        Plotly.newPlot('plotdiv', data, layout, {showSendToCloud: true});
+    };
+    
+    var innerContainer = document.querySelector('[data-num="0"'),
+        plotEl = innerContainer.querySelector('.plot'),
+        genreSelector = innerContainer.querySelector('.genredata');
+    
+    function assignOptions(textArray, selector) {
+        for (var i = 0; i < textArray.length;  i++) {
+            var currentOption = document.createElement('option');
+            currentOption.text = textArray[i];
+            selector.appendChild(currentOption);
+        }
+    }
+    
+    assignOptions(listofGenres, genreSelector);
+    
+    function updateGenre(){
+        setBubblePlot(genreSelector.value);
+    }
+    
+    genreSelector.addEventListener('change', updateGenre, false);
+    }); 
