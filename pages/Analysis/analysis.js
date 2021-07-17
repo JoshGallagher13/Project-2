@@ -154,7 +154,7 @@ Plotly.d3.csv('https://raw.githubusercontent.com/JoshGallagher13/Project-2/main/
             }
         };
     
-    // Default Country Data
+    // Default Genre Data
     setBubblePlot('Action');
     
     function setBubblePlot(chosenGenre) {
@@ -176,7 +176,7 @@ Plotly.d3.csv('https://raw.githubusercontent.com/JoshGallagher13/Project-2/main/
     
     var innerContainer = document.querySelector('[data-num="0"'),
         plotEl = innerContainer.querySelector('.plot'),
-        genreSelector = innerContainer.querySelector('.countrydata');
+        genreSelector = innerContainer.querySelector('.genredata');
     
     function assignOptions(textArray, selector) {
         for (var i = 0; i < textArray.length;  i++) {
