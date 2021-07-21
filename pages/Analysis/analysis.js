@@ -7,12 +7,26 @@ Plotly.d3.csv('https://raw.githubusercontent.com/JoshGallagher13/Project-2/main/
             return rows.map(function(row) { return row[key]; });
         }
     
+
     var allGenreNames = unpack(rows, 'Genre'),
         allRatings = unpack(rows, 'ESRB_Rating'),
+        //allRanks=unpack(rows, 'Ranks'),
+        allPlayers=unpack(rows, 'Players'),
+        //allPercent_Play=unpack(rows, 'Percent_Play'),
+        allPublisher=unpack(rows, 'Publisher'),
+        allCritic_Score=unpack(rows, 'Critic_Score'),
+        allUser_Score=unpack(rows, 'User_Score'),
+        allGame=unpack(rows, 'Game'),
+        allHours=unpack(rows, 'Hours'),
+
+        
+
         listofGenres = [],
         currentGenre,
         listofRatings = [],
         currentRating = [];
+        
+        console.log()
 
         for (var i = 0; i < allGenreNames.length; i++ ){
             if (listofGenres.indexOf(allGenreNames[i]) === -1 ){
@@ -20,19 +34,31 @@ Plotly.d3.csv('https://raw.githubusercontent.com/JoshGallagher13/Project-2/main/
             }
         }    
         
+        //var groupBy = function(xs, key) {
+        //    return xs.reduce(function(rv, x) {
+        //      (rv[x[key]] = rv[x[key]] || []).push(x);
+        //      return rv;
+        //    }, {});
+        //  };
+        //  console.log(groupBy(allGenreNames, 'length'));
+
         function getGenreData(chosenGenre) {
             currentRating = [];
             currentGenre = [];
+            currentHours = [];
+            currentCriticScore = [];
                 for (var i = 0 ; i < allGenreNames.length ; i++){
                     if ( allGenreNames[i] === chosenGenre ) {
                     currentRating.push(allRatings[i]);
                     currentGenre.push(allGenreNames[i]);
+                    currentHours.push(allHours[i]);
+                    currentCriticScore.push(allCritic_Score[i]);
                 } 
             }
         };
 
     // Default Genre Data
-    setBubblePlot('Action');
+    setBubblePlot('Shooter');
     
     function setBubblePlot(chosenGenre) {
         getGenreData(chosenGenre);  
@@ -51,6 +77,37 @@ Plotly.d3.csv('https://raw.githubusercontent.com/JoshGallagher13/Project-2/main/
         Plotly.newPlot('plotdiv', data, layout, {showSendToCloud: true});
     };
     
+    var options = {
+        chart: {
+          type: 'line',
+          height: '800',
+        },
+        series: [{
+          type: 'line',
+          name: 'Critic Score',
+          data: currentCriticScore},
+          {type:'line',
+          name: 'Hours Played',
+          data: currentHours}],
+          xaxis: {
+            categories: listofGenres
+          },
+          
+        stroke: {
+        curve: 'smooth',
+          }
+      }
+      
+      var chart = new ApexCharts(document.querySelector("#graph"), options);
+      
+      chart.render();
+
+
+
+
+
+
+
     var innerContainer = document.querySelector('[data-num="0"'),
         plotEl = innerContainer.querySelector('.plot'),
         genreSelector = innerContainer.querySelector('.genredata');
