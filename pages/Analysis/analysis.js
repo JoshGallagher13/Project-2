@@ -1,5 +1,3 @@
-
-
 //interactive with dropdown
 Plotly.d3.csv('https://raw.githubusercontent.com/JoshGallagher13/Project-2/main/resources/steam_sales_data.csv', function(err, rows){
 
@@ -26,8 +24,6 @@ Plotly.d3.csv('https://raw.githubusercontent.com/JoshGallagher13/Project-2/main/
         listofRatings = [],
         currentRating = [];
         
-        console.log()
-
         for (var i = 0; i < allGenreNames.length; i++ ){
             if (listofGenres.indexOf(allGenreNames[i]) === -1 ){
             listofGenres.push(allGenreNames[i]);
@@ -64,14 +60,14 @@ Plotly.d3.csv('https://raw.githubusercontent.com/JoshGallagher13/Project-2/main/
         getGenreData(chosenGenre);  
     
         var trace1 = {
-            x: currentRating,
+            x: currentCriticScore,
             type: 'histogram'
         };  
     
         var data = [trace1];
     
         var layout = {
-            title: 'Number of Games with Rating (placeholder) <br>'+ chosenGenre,
+            title: 'Number of Games with Critic Score per Genre (placeholder) <br>'+ chosenGenre,
         };
     
         Plotly.newPlot('plotdiv', data, layout, {showSendToCloud: true});
@@ -79,28 +75,29 @@ Plotly.d3.csv('https://raw.githubusercontent.com/JoshGallagher13/Project-2/main/
     
     var options = {
         chart: {
-          type: 'line',
-          height: '800',
+            type: 'line',
+            height: '300',
         },
         series: [{
-          type: 'line',
-          name: 'Critic Score',
-          data: currentCriticScore},
-          {type:'line',
-          name: 'Hours Played',
-          data: currentHours}],
-          xaxis: {
-            categories: listofGenres
-          },
-          
-        stroke: {
-        curve: 'smooth',
-          }
-      }
-      
-      var chart = new ApexCharts(document.querySelector("#graph"), options);
-      
-      chart.render();
+            type: 'line',
+            name: 'Critic Score',
+            data: currentCriticScore},
+            {type:'line',
+            name: 'Hours Played',
+            data: currentHours}],
+            xaxis: {
+                type: 'category',
+                categories: listofGenres
+            },
+        
+            stroke: {
+            curve: 'smooth',
+            }
+        }
+    
+        var chart = new ApexCharts(document.querySelector("#graph"), options);
+    
+        chart.render();
 
 
 
@@ -127,4 +124,4 @@ Plotly.d3.csv('https://raw.githubusercontent.com/JoshGallagher13/Project-2/main/
     }
     
     genreSelector.addEventListener('change', updateGenre, false);
-    });   
+    });
