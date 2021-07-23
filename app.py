@@ -5,7 +5,7 @@ import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 from configfile import db_user, db_password, db_host, db_port, db_name
 
 #################################################
@@ -36,42 +36,64 @@ app = Flask(__name__)
 
 @app.route("/")
 def welcome():
-    return (
-        f"Available Routes:<br/>"
-        f"/api/v1.0/steam<br/>"
-        
-    )
+    return render_template('analysis.html')
 
-@app.route("/api/v1.0/steam")
+@app.route("/api/steam")
 def steam():
-    df=pd.read_sql("SELECT*from steam",conn)
-    data = df.values.tolist()
-    flask_data=[]
-    for result in range(len(data)):
-        steam_dic = {}
-        steam_dic["Index"] = data[result][0]
-        steam_dic["Game"] = data[result][1]
-        steam_dic["Players"] =data[result][2]
-        steam_dic["Hours"] = data[result][3]
-        steam_dic["Percent_Play"] =data[result][4]
-        steam_dic["Rank"] =data[result][5]
-        steam_dic["Genre"] =data[result][6]
-        steam_dic["ESRB_Rating"] =data[result][7]
-        steam_dic["Platform"] =data[result][8]
-        steam_dic["Publisher"] =data[result][9]
-        steam_dic["Developer"] =data[result][10]
-        steam_dic["Critic_Score"] =data[result][11]
-        steam_dic["User_Score"] =data[result][12]
-        steam_dic["Total_Shipped"] =data[result][13]
-        steam_dic["Global_Sales"] =data[result][14]
-        steam_dic["NA_Sales"] =data[result][15]
-        steam_dic["PAL_Sales"] =data[result][16]
-        steam_dic["JP_Sales"] =data[result][17]
-        steam_dic["Other_Sales"] =data[result][18]
-        steam_dic["Year"] =data[result][19]
-        flask_data.append(steam_dic)
+    
+    steam_df = pd.read_sql("SELECT * FROM steam", conn)
+    steam_json = steam_df.to_json(orient='records')
+    
+    return steam_json
 
-    return jsonify(flask_data)
+@app.route("/api/game_player_summary")
+def game_player_summary():
+    
+    query = '''
+        SELECT 
+            year,
+            genre,
+            game,
+            SUM(players) AS players_sum,
+            SUM(hours) AS hours_sum,
+            critic_score,
+            rank
+        FROM 
+            steam
+        GROUP BY
+            year,
+            genre,
+            game
+        ORDER BY
+            year,
+            genre,
+            game
+    '''
+
+    steam_df = pd.read_sql(query, conn)
+    steam_json = steam_df.to_json(orient='records')
+    
+    return steam_json
+
+@app.route("/api/get_genres")
+def get_genres():
+    
+    query = '''
+        SELECT 
+            genre,
+            COUNT(*) as record_count
+        FROM 
+            steam
+        GROUP BY
+            genre
+        ORDER BY
+            genre
+    '''
+
+    steam_df = pd.read_sql(query, conn)
+    steam_json = steam_df.to_json(orient='records')
+    
+    return steam_json
 
 if __name__ == '__main__':
     app.run(debug=True)
