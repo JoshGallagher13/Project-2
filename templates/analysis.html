@@ -17,9 +17,13 @@
     
     <!-- D3 JS -->
     <script src="https://d3js.org/d3.v5.min.js"></script>
-    
+
+    <!-- JS Chart Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
     <!-- Custom CSS & JS-->
     <script src="./static/js/analysis.js" defer></script>
+
   </head>
 
   <body>
@@ -51,30 +55,51 @@
         <div class="col-md-12 text-center">
           <div class="well">
             <h1>All About Videogames</h1>
-            <p>Use the interactive charts below to explore the dataset</p>
           </div>
         </div>
       </div>
+      <div class="row">
+        <div class="col-md-12">
+            <div class="plot" id="summary-plot"></div>
+        </div>
+      </div> 
+
       <div class='row'>
         <div class='col-md-12'>
-          Change Genre: <select class="genredata" id='genre_dropdown' onchange='handleGenre()'></select>
+          <center><b>Select a genre to see visualizations on PC's top played games</b></center>
+          <center>Select Genre: <select class="genredata" id='genre_dropdown' onchange='handleGenre()'></select></center>
         </div>
       </div>
       <div class="row">
         <div class="col-md-6">
             <div class="plot" id="players-plot"></div>
+            <center><div class="analysis" id="players-analysis"></div></center>
+            <center><div class="analysis" id="players-analysis2"></div></center>
+            <center><div class="analysis" id="players-analysis3"></div></center>
         </div>
         <div class="col-md-6">
           <div class="plot" id="hours-plot"></div>
+          <center><div class="analysis" id="hours-analysis"></div></center>
+          <center><div class="analysis" id="hours-analysis2"></div></center>
+          <center><div class="analysis" id="hours-analysis3"></div></center>
         </div>
         <div class="row">
           <div class="col-md-6">
               <div class="plot" id="bubble-plot"></div>
+              <center><div class="analysis" id="bubble-analysis"></div></center>
+              <center><div class="analysis" id="bubble-analysis2"></div></center>
+              <center><div class="analysis" id="bubble-analysis3"></div></center>
+              <center><div class="analysis" id="bubble-analysis4"></div></center>
+              <center><div class="analysis" id="bubble-analysis5"></div></center>
+              <center><div class="analysis" id="bubble-analysis6"></div></center>
           </div>
           <div class="col-md-6">
             <div class="plot" id="other-plot"></div>
+            <center><div class="analysis" id="other-analysis"></div></center>
+            <center><div class="analysis" id="other-analysis2"></div></center>
           </div>
-        </div>      
+        </div>
+              
       </div>
     </div> <!-- End of container -->
 

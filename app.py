@@ -57,6 +57,7 @@ def game_player_summary():
             SUM(players) AS players_sum,
             SUM(hours) AS hours_sum,
             critic_score,
+            user_score,
             rank
         FROM 
             steam

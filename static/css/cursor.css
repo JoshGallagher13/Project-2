@@ -1,0 +1,51 @@
+#cursor {
+    position: absolute;
+    }
+    #body {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%/50%;
+    background: #FFFF00;
+    }
+    .eye {
+    height: 2px;
+    width: 2px;
+    border-radius: 50%/50%;
+    background: #000;
+    margin-top: -16px;
+    margin-left: 10px;
+    }
+    .mouth {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-color: transparent #000000 transparent transparent;
+    -webkit-animation: omnomnom 0.5s infinite linear;
+    }
+     @-webkit-keyframes omnomnom {
+    0% {
+    border-width: 6px 9px 6px 0;
+    margin-left:12px;
+    margin-top:-1px;
+    }
+    25% {
+    border-width: 3px 9px 3px 0;
+    margin-left:16px;
+    margin-top:1px;
+    }
+    50% {
+    border-width: 1px 9px 1px 0;
+    margin-left:19px;
+    margin-top:2px;
+    }
+    75% {
+    border-width: 3px 9px 3px 0;
+    margin-left:16px;
+    margin-top:1px;
+    }
+    100% {
+    border-width: 6px 9px 6px 0;
+    margin-left:12px;
+    margin-top:-1px;
+    }
+    }
