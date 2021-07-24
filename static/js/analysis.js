@@ -82,6 +82,7 @@ function buildCharts(selected_genre) {
         var data = [trace1];
         var layout = {
             title: `${selected_genre} Player Count`,
+            titlefont: {family: 'monospace'},
             yaxis: {
                 automargin: true
             }};
@@ -110,6 +111,7 @@ function buildCharts(selected_genre) {
         var data = [trace1];
         var layout = {
             title: `${selected_genre} Hours Played`,
+            titlefont: {family: 'monospace'},
             yaxis: {
                 automargin: true
             }
@@ -136,12 +138,13 @@ function buildCharts(selected_genre) {
         var data = [trace3];
         var layout = {
             title: 'Avg Hours per Player vs. Sales Rank',
+            titlefont: {family: 'monospace'},
             showlegend: false,
             xaxis: {
                 title: 'Sales Rank',
                 range: [maxRank+5000,minRank-5000],
                 titlefont: {
-                    family: 'Arial, sans-serif',
+                    family: 'monospace',
                     size: 18,
                     color: 'black'
                 }
@@ -150,7 +153,7 @@ function buildCharts(selected_genre) {
                 
                 title: 'Hours per Player',
                 titlefont: {
-                    family: 'Arial, sans-serif',
+                    family: 'monospace',
                     size: 18,
                     color: 'black'
                 }
@@ -163,6 +166,7 @@ function buildCharts(selected_genre) {
             domain: { x: [0, 1], y: [0, 1] },
             value: avgHours,
             title: `Avg Hrs of ${selected_genre} Games `,
+            titlefont: {family: 'monospace'},
             type: "indicator",
             mode: "gauge+number+delta",
             delta: { reference: 67460 },
@@ -257,7 +261,8 @@ d3.json('/api/get_genres').then(data => {
     var options = {
         chart: {
             type: 'radar',
-            height: 400
+            height: 400,
+            fontFamily: 'monospace'
         },
         series: [{
             name: 'Number of Games',

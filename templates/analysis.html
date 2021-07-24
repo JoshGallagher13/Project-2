@@ -25,36 +25,13 @@
     <script src="./static/js/analysis.js" defer></script>
 
   </head>
-
-  <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>                        
-          </button>
-            <a class="navbar-brand">Project 2 | Group 7</a>
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-          <ul class="nav navbar-nav">
-            <li><a href="../index.html">Overview</a></li>
-            <li class="active"><a href="#">Analysis</a></li>
-            <li><a href="../Data_Sources/data.html">Data Sources</a></li>
-            <li><a href="https://github.com/JoshGallagher13/Project-2">Github Repository</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
+  <body style="font-family: monospace;">
     <!-- Graphs -->
-    <div class="container">
+    <div class="container" style="background-color:#f7f7f7;">
       <div class="row">
         <div class="col-md-12 text-center">
           <div class="well">
-            <h1>All About Videogames</h1>
+            <h1 style="margin-top: 50px; font-family: monospace;">all about VIDEOgames</h1>
           </div>
         </div>
       </div>
@@ -66,8 +43,8 @@
 
       <div class='row'>
         <div class='col-md-12'>
-          <center><b>Select a genre to see visualizations on PC's top played games</b></center>
-          <center>Select Genre: <select class="genredata" id='genre_dropdown' onchange='handleGenre()'></select></center>
+          <center><b style="font-family: monospace;">Select a genre to see visualizations on PC's top played games</b></center>
+          <center style="margin-bottom: 50px; font-family: monospace;">Select Genre: <select class="genredata" id='genre_dropdown' onchange='handleGenre()'></select></center>
         </div>
       </div>
       <div class="row">
@@ -83,7 +60,7 @@
           <center><div class="analysis" id="hours-analysis2"></div></center>
           <center><div class="analysis" id="hours-analysis3"></div></center>
         </div>
-        <div class="row">
+        <div class="row" style="margin-top: 50px; margin-bottom: 50px;">
           <div class="col-md-6">
               <div class="plot" id="bubble-plot"></div>
               <center><div class="analysis" id="bubble-analysis"></div></center>
@@ -102,6 +79,6 @@
               
       </div>
     </div> <!-- End of container -->
-
+    <h1 style="margin-bottom: 100px;"></h1>
   </body>
 </html>
