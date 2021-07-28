@@ -1,4 +1,15 @@
 
+
+
+/***********************************/
+// This is the event listener function that is attached to the dropdown
+/**********************************/
+function handleGenre(){
+    selected_genre = d3.select('#genre_dropdown').node().value;
+    buildCharts(selected_genre);
+}
+
+
 /***********************************/
 //Functions to create hexcolor codes based on string
 /**********************************/
@@ -16,14 +27,6 @@ function intToRGB(i){
         .toUpperCase();
 
     return "00000".substring(0, 6 - c.length) + c;
-}
-
-/***********************************/
-// This is the event listener function that is attached to the dropdown
-/**********************************/
-function handleGenre(){
-    selected_genre = d3.select('#genre_dropdown').node().value;
-    buildCharts(selected_genre);
 }
 
 /***********************************/
@@ -169,14 +172,14 @@ function buildCharts(selected_genre) {
             titlefont: {family: 'monospace'},
             type: "indicator",
             mode: "gauge+number+delta",
-            delta: { reference: 67460 },
+            delta: { reference: 114423 },
             gauge: {
-                axis: { range: [null, 75000] },
+                axis: { range: [null, 120000] },
                 bar: { color: "#4d6891" },
                 threshold: {
                     line: { color: "red", width: 4 },
                     thickness: 0.75,
-                    value: 67460
+                    value: 114423
                 }
             }
         }];
@@ -221,20 +224,20 @@ function buildCharts(selected_genre) {
         document.getElementById("players-analysis").innerHTML = `${games[gameMax(player_count)]} was the game with the most players by a margin of ${maxs(player_count)[0]-maxs(player_count)[1]} players`
         document.getElementById("players-analysis2").innerHTML = `Which was a ${(((maxs(player_count)[0]/maxs(player_count)[1])-1)*100).toFixed()}% lead over 2nd spot`
         document.getElementById("players-analysis3").innerHTML = `And a  ${(((maxs(player_count)[0]/maxs(player_count).slice(-1)[0])-1)*100).toFixed()}% lead over the last spot`
-        // For players plot
+        // For hours plot
         document.getElementById("hours-analysis").innerHTML = `${games[gameMax(hours)]} had the most time played by a margin of ${maxs(hours)[0] - maxs(hours)[1]} hours`
         document.getElementById("hours-analysis2").innerHTML = `Which was a ${(((maxs(hours)[0]/maxs(hours)[1])-1)*100).toFixed()}% lead over 2nd spot`
         document.getElementById("hours-analysis3").innerHTML = `And a  ${(((maxs(hours)[0]/maxs(hours).slice(-1)[0])-1)*100).toFixed()}% lead over the last spot`
-        // For players plot
+        // For bubble plot
         document.getElementById("bubble-analysis").innerHTML =`${games[gameMax(avgGameHours)]} had the highest average playtime by a margin of ${maxs(avgGameHours)[0] - maxs(avgGameHours)[1]} hours`
         document.getElementById("bubble-analysis2").innerHTML = `Which was a ${(((maxs(avgGameHours)[0]/maxs(avgGameHours)[1])-1)*100).toFixed()}% lead over 2nd spot`
         document.getElementById("bubble-analysis3").innerHTML = `And a  ${(((maxs(avgGameHours)[0]/maxs(avgGameHours).slice(-1)[0])-1)*100).toFixed()}% lead over the last spot`
         document.getElementById("bubble-analysis4").innerHTML =`${games[gameMin(rank)]} had the highest sales rank by a margin of ${maxs(rank).slice(-2)[0] - maxs(rank).slice(-1)[0]} spots`
         document.getElementById("bubble-analysis5").innerHTML = `Which was a ${(((maxs(rank).slice(-2)[0]/maxs(rank).slice(-1)[0])-1)*100).toFixed()}% lead over 2nd spot`
         document.getElementById("bubble-analysis6").innerHTML = `And a  ${(((maxs(rank)[0]/maxs(rank).slice(-1)[0])-1)*100).toFixed()}% lead over the last spot`
-        // For players plot
-        document.getElementById("other-analysis").innerHTML = `${selected_genre}'s top 10 games had an average of ${avgHours} hours played per game`
-        document.getElementById("other-analysis2").innerHTML = `Which was ${67458.56-avgHours.toFixed()} hours less than the shooter genre's average of 67458.56 hours per game`
+        // For gauge plot
+        document.getElementById("other-analysis").innerHTML = `${selected_genre}'s top 10 games had an average of ${avgHours.toFixed()} hours played per game`
+        document.getElementById("other-analysis2").innerHTML = `Which was ${114423-avgHours.toFixed()} hours less than the strategy genre's average of 114423 hours per game`
     });
 }
 
